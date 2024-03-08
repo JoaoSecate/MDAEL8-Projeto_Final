@@ -22,21 +22,21 @@ def main():
     # Separating out the target
     y = df.loc[:,[target]].values
 
-    # Z-score normalization
-    x_zcore = StandardScaler().fit_transform(x)
-    normalized1Df = pd.DataFrame(data = x_zcore, columns = features)
-    normalized1Df = pd.concat([normalized1Df, df[[target]]], axis = 1)
-    ShowInformationDataFrame(normalized1Df,"Dataframe Z-Score Normalized")
-    # Salva arquivo com normalização Z-Score
-    normalized1Df.to_csv(output_file, header=False, index=False)  
-
-    # Min-Max normalization
-    x_minmax = MinMaxScaler().fit_transform(x)
-    normalized2Df = pd.DataFrame(data = x_minmax, columns = features)
-    normalized2Df = pd.concat([normalized2Df, df[[target]]], axis = 1)
-    ShowInformationDataFrame(normalized2Df,"Dataframe Min-Max Normalized")
-    # Salva arquivo com normalização Min-Max
-    normalized2Df.to_csv(output_file, header=False, index=False)  
+    if input('Normalization: [1]Z-Score, [2]Min-Max > ') == 1:
+        # Z-score normalization
+        x_zcore = StandardScaler().fit_transform(x)
+        normalized1Df = pd.DataFrame(data = x_zcore, columns = features)
+        normalized1Df = pd.concat([normalized1Df, df[[target]]], axis = 1)
+        ShowInformationDataFrame(normalized1Df,"Dataframe Z-Score Normalized")
+        # Salva arquivo com normalização Z-Score
+        normalized1Df.to_csv(output_file, header=False, index=False)  
+    else:
+        x_minmax = MinMaxScaler().fit_transform(x)
+        normalized2Df = pd.DataFrame(data = x_minmax, columns = features)
+        normalized2Df = pd.concat([normalized2Df, df[[target]]], axis = 1)
+        ShowInformationDataFrame(normalized2Df,"Dataframe Min-Max Normalized")
+        # Salva arquivo com normalização Min-Max
+        normalized2Df.to_csv(output_file, header=False, index=False)  
 
 
 def ShowInformationDataFrame(df, message=""):
