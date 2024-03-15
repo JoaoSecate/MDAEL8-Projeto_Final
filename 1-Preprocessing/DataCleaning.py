@@ -49,7 +49,6 @@ def main():
     # Salva arquivo com o tratamento para dados faltantes
     df.to_csv(output_file, header=False, index=False)  
     
-
 def UpdateMissingValues(df, column, method="mode", number=0):
     if method == 'number':
         # Substituindo valores ausentes por um número
@@ -66,7 +65,6 @@ def UpdateMissingValues(df, column, method="mode", number=0):
         # Substituindo valores ausentes pela moda
         mode = df[column].mode()[0]
         df[column].fillna(mode, inplace=True)
-
 
 if __name__ == "__main__":
     main()

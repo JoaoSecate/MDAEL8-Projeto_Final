@@ -9,7 +9,7 @@ def main():
     df = pd.read_csv(input_file,    # Nome do arquivo com dados
                       names = names) # Nome das colunas         
 
-    N = 3;
+    N = int(input('Digite a quantidade de Bins: '))
     freqtable = pd.cut(df['Na'], bins=N) 
     freq = freqtable.value_counts().sort_index()
     print(freq)

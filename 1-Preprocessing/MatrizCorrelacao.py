@@ -9,10 +9,11 @@ def main():
     df = pd.read_csv(input_file,    # Nome do arquivo com dados
                       names = names) # Nome das colunas                      
 
+    #Cria Matriz
     correlacao = df.corr()
     sns.heatmap(correlacao, annot=True, fmt=".2f", cmap="coolwarm", cbar=True, square=True, linewidths=0.5)
-    
     plt.title("Matriz de Correlação")
+    #Exibe Matriz
     plt.show()
 
 if __name__ == "__main__":

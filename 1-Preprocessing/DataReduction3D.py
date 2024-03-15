@@ -15,11 +15,7 @@ def main():
                      names = names) # Nome das colunas                      
     ShowInformationDataFrame(df,"Dataframe original")
 
-    # Separating out the features
     x = df.loc[:, features].values
-
-    # Separating out the target
-    y = df.loc[:,[target]].values
 
     # Standardizing the features
     x = StandardScaler().fit_transform(x)
@@ -27,7 +23,7 @@ def main():
     normalizedDf = pd.concat([normalizedDf, df[[target]]], axis = 1)
     ShowInformationDataFrame(normalizedDf,"Dataframe Normalized")
 
-    # PCA projection
+    # Cria PCA
     pca = PCA(n_components=3)    
     principalComponents = pca.fit_transform(x)
     print("Explained variance per component:")
@@ -40,9 +36,7 @@ def main():
                                           'principal component 3'])
     finalDf = pd.concat([principalDf, df[[target]]], axis = 1)    
     ShowInformationDataFrame(finalDf,"Dataframe PCA")
-    
     VisualizePcaProjection(finalDf, target)
-
 
 def ShowInformationDataFrame(df, message=""):
     print(message+"\n")
@@ -51,14 +45,14 @@ def ShowInformationDataFrame(df, message=""):
     print(df.head(10))
     print("\n")
     
-           
+#Exibe PCA
 def VisualizePcaProjection(finalDf, targetColumn):
     fig = plt.figure(figsize = (8,8)) 
     ax = fig.add_subplot(111, projection = '3d')
-    ax.set_xlabel('Principal Component 1', fontsize = 15)
-    ax.set_ylabel('Principal Component 2', fontsize = 15)
-    ax.set_zlabel('Principal Component 3', fontsize = 15)
-    ax.set_title('3 component PCA', fontsize = 20)
+    ax.set_xlabel('Componente 1', fontsize = 15)
+    ax.set_ylabel('Componente 2', fontsize = 15)
+    ax.set_zlabel('Componente 3', fontsize = 15)
+    ax.set_title('PCA com 3 componentes', fontsize = 20)
     targets = [1, 2, 3, 4, 5, 6, 7]
     colors = ['r', 'g', 'b', 'y', 'c', 'm', 'k']
     for target, color in zip(targets,colors):
@@ -71,9 +65,6 @@ def VisualizePcaProjection(finalDf, targetColumn):
     ax.legend(targets)
     ax.grid()
     plt.show()
-
-    
-
 
 if __name__ == "__main__":
     main()

@@ -3,7 +3,6 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler
 
-
 def main():
     # Faz a leitura do arquivo
     input_file = '0-Datasets/glass_Clear.data'
@@ -15,11 +14,7 @@ def main():
                      names = names) # Nome das colunas                      
     ShowInformationDataFrame(df,"Dataframe original")
 
-    df_original = df.copy()
-    # Separating out the features
     x = df.loc[:, features].values
-    
-    # Separating out the target
     y = df.loc[:,[target]].values
 
     if input('Normalization: [1]Z-Score, [2]Min-Max > ') == 1:
@@ -31,6 +26,7 @@ def main():
         # Salva arquivo com normalização Z-Score
         normalized1Df.to_csv(output_file, header=False, index=False)  
     else:
+        # Min-Max normalization
         x_minmax = MinMaxScaler().fit_transform(x)
         normalized2Df = pd.DataFrame(data = x_minmax, columns = features)
         normalized2Df = pd.concat([normalized2Df, df[[target]]], axis = 1)
@@ -38,14 +34,12 @@ def main():
         # Salva arquivo com normalização Min-Max
         normalized2Df.to_csv(output_file, header=False, index=False)  
 
-
 def ShowInformationDataFrame(df, message=""):
     print(message+"\n")
     print(df.info())
     print(df.describe())
     print(df.head(10))
     print("\n") 
-
 
 if __name__ == "__main__":
     main()
