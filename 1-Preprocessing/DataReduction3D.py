@@ -16,8 +16,6 @@ def main():
     ShowInformationDataFrame(df,"Dataframe original")
 
     x = df.loc[:, features].values
-
-    # Standardizing the features
     x = StandardScaler().fit_transform(x)
     normalizedDf = pd.DataFrame(data = x, columns = features)
     normalizedDf = pd.concat([normalizedDf, df[[target]]], axis = 1)

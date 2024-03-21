@@ -13,6 +13,8 @@ def main():
     freqtable = pd.cut(df['Na'], bins=N) 
     freq = freqtable.value_counts().sort_index()
     print(freq)
+
+    #Exibe a tabela
     plt.bar(freq.index.astype(str), freq.values)
     plt.xlabel('Categorias')
     plt.ylabel('Frequencias')
