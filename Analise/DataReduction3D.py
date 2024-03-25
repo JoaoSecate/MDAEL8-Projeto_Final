@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 
 def main():
     # Faz a leitura do arquivo
-    input_file = '0-Datasets/glass_Normalized.data'
+    input_file = 'Datasets/glass_Normalized.data'
     names = ['RI','Na','Mg','Al','Si','K','Ca','Ba','Fe','Tipo'] 
     features = ['RI','Na','Mg','Al','Si','K','Ca','Ba','Fe']
     target = 'Tipo'

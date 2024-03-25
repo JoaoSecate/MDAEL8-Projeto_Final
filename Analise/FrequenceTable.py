@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 
 def main():
     # Faz a leitura do arquivo
-    input_file = '0-Datasets/glass_Clear.data'
+    input_file = 'Datasets/glass_Clear.data'
     names = ['RI','Na','Mg','Al','Si','K','Ca','Ba','Fe']
     df = pd.read_csv(input_file,    # Nome do arquivo com dados
                       names = names) # Nome das colunas         
 
     N = int(input('Digite a quantidade de Bins: '))
-    freqtable = pd.cut(df['Na'], bins=N) 
+    freqtable = pd.cut(df['RI'], bins=N) 
     freq = freqtable.value_counts().sort_index()
     print(freq)
 

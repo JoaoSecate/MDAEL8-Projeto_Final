@@ -5,8 +5,8 @@ def main():
     # Faz a leitura do arquivo
     names = ['Id','RI','Na','Mg','Al','Si','K','Ca','Ba','Fe','Tipo'] 
     features = ['RI','Na','Mg','Al','Si','K','Ca','Ba','Fe','Tipo']
-    output_file = '0-Datasets/glass_Clear.data'
-    input_file = '0-Datasets/glass.data'
+    output_file = 'Datasets/glass_Clear.data'
+    input_file = 'Datasets/glass.data'
     df = pd.read_csv(input_file,         # Nome do arquivo com dados
                      names = names,      # Nome das colunas 
                      usecols = features, # Define as colunas que serão  utilizadas

@@ -38,9 +38,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="0-Datasets\" />
-    <Folder Include="1-Preprocessing\" />
-    <Folder Include="2-Clustering\" />
+    <Folder Include="Datasets\" />
+    <Folder Include="Pre_processamento\" />
+    <Folder Include="Analise\" />
     <Folder Include="3-Classification\" />
     <Folder Include="4-Regression\" />
   </ItemGroup>
