@@ -4,13 +4,16 @@ import matplotlib.pyplot as plt
 
 def main():
     # Faz a leitura do arquivo
-    input_file = 'Datasets/glass_Clear.data'
-    names = ['RI','Na','Mg','Al','Si','K','Ca','Ba','Fe']
-    df = pd.read_csv(input_file,    # Nome do arquivo com dados
-                      names = names) # Nome das colunas         
+    input_file = 'Datasets/glass.data'
+    names = ['Id','RI','Na','Mg','Al','Si','K','Ca','Ba','Fe','Tipo'] 
+    features = ['RI','Na','Mg','Al','Si','K','Ca','Ba','Fe','Tipo']
+    df = pd.read_csv(input_file,         # Nome do arquivo com dados
+                     names = names,      # Nome das colunas 
+                     usecols = features, # Define as colunas que serão  utilizadas
+                     na_values='?')      # Define que ? será considerado valores ausentes    
 
     N = int(input('Digite a quantidade de Bins: '))
-    freqtable = pd.cut(df['RI'], bins=N) 
+    freqtable = pd.cut(df['Si'], bins=N) 
     freq = freqtable.value_counts().sort_index()
     print(freq)
 
