@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def main():
     # Faz a leitura do arquivo
-    input_file = 'Datasets/glass.data'
+    input_file = 'Datasets/glass.data' #?
     names = ['Id','RI','Na','Mg','Al','Si','K','Ca','Ba','Fe','Tipo'] 
     features = ['RI','Na','Mg','Al','Si','K','Ca','Ba','Fe','Tipo']
     df = pd.read_csv(input_file,         # Nome do arquivo com dados
